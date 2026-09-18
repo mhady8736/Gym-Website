@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .nav-blur {
+    backdrop-filter: blur(10px);
+    background-color: rgba(10, 10, 10, 0.8);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+  opacity: 0;
+}
+.is-visible {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Simple Accordion Logic via Peer */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+input:checked ~ .faq-content {
+  max-height: 200px;
+}
+input:checked ~ .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* RTL overrides if needed */
+html[dir="rtl"] input:checked ~ .faq-icon {
+  transform: rotate(-180deg);
+}
